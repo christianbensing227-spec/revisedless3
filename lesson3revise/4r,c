@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+/* Calculate BMI using weight in kilograms and height in meters. */
+double calculateBMI(double weight, double height) {
+    return weight / (height * height);
+}
+
+/* Return the BMI category as easy-to-display text. */
+const char *getBMICategory(double bmi) {
+    if (bmi < 18.5) {
+        return "Underweight";
+    }
+    if (bmi <= 24.9) {
+        return "Normal";
+    }
+    if (bmi <= 29.9) {
+        return "Overweight";
+    }
+    return "Obese";
+}
+
+int main(void) {
+    double weight;
+    double height;
+    double bmi;
+
+    printf("Enter weight (kg): ");
+    scanf("%lf", &weight);
+    printf("Enter height (m): ");
+    scanf("%lf", &height);
+
+    if (weight <= 0.0 || height <= 0.0) {
+        printf("Error: Weight and height must be greater than zero.\n");
+        return 0;
+    }
+
+    bmi = calculateBMI(weight, height);
+    printf("\nBMI: %.2f\n", bmi);
+    printf("Category: %s\n", getBMICategory(bmi));
+
+    return 0;
+}
